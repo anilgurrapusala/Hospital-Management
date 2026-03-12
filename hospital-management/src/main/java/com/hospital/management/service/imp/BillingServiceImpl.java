@@ -3,7 +3,6 @@ package com.hospital.management.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -91,5 +90,10 @@ public class BillingServiceImpl implements BillingService {
 		setUpadtes.setTotalAmount(billingDto.getConsultationFee()+billingDto.getMedicineCost());
 		Billing saveUpdates=billingRepository.save(setUpadtes);
 		return entityToDto(bbId);
+	}
+	@Override
+	public List<BillingDto> getAllbillingsfee() {
+		List<Billing> allFees	=billingRepository.findConsutanceFee();
+		return entityListToDtoList(allFees);
 	}
 }

@@ -14,4 +14,6 @@ public interface BillingService {
 
 	BillingDto UpdateBilling(BillingDto billingDto, Long billingId);
 
+	List<BillingDto> getAllbillingsfee();
+
 }

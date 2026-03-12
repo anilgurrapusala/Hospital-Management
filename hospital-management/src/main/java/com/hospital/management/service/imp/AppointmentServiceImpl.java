@@ -101,42 +101,40 @@ public class AppointmentServiceImpl implements AppointmentService {
 		List<Appointment> allDates = appointmentRepository.findByCreatedAtBetween(start, end);
 		return entityListToDtoList(allDates);
 	}
-	
-	  @Override public List<Map<Object, Object>> allJoinsFromAppointment(Long
-	  appointmentId) { 
-		  List<Map<Object, Object>>  allJoinsApById=appointmentRepository.findByJOinsAps(appointmentId);
-		  return  allJoinsApById; 
-	 
-}
 
-	  @Override
-	  public List<Map<Object, Object>> allJoinsFromAppointmentss() {
-		  List<Map<Object, Object>>  allJoins=appointmentRepository.findByAllJoins();
+	@Override
+	public List<Map<Object, Object>> allJoinsFromAppointment(Long appointmentId) {
+		List<Map<Object, Object>> allJoinsApById = appointmentRepository.findByJOinsAps(appointmentId);
+		return allJoinsApById;
+
+	}
+
+	@Override
+	public List<Map<Object, Object>> allJoinsFromAppointmentss() {
+		List<Map<Object, Object>> allJoins = appointmentRepository.findByAllJoins();
 		return allJoins;
-	  }
+	}
 
-	  @Override
-	  public List<AppointmentJoinsDto> apJoinsSeparate() {
-		  List<AppointmentJoins> allJoinsSp=appointmentRepository.findByJoinsApsSeparate();
-		  List<AppointmentJoinsDto> allDtos=new ArrayList<>();
-		  for(AppointmentJoins sss:allJoinsSp) {
-			  AppointmentJoinsDto dto=new AppointmentJoinsDto();
-			  dto.setAppointmentId(sss.getAppointmentId());
-			  dto.setAppointmentDate(sss.getAppointmentDate());
-              dto.setConsultationFee(sss.getConsultationFee());
-         
-			  dto.setName(sss.getName());
-			  dto.setStatus(sss.getStatus());
-			  dto.setSpecialization(sss.getSpecialization());
-			  dto.setPhone(sss.getPhone());
-			  dto.setPaymentStatus(sss.getPaymentStatus());
-			  allDtos.add(dto);
-		  }
-		 
+	@Override
+	public List<AppointmentJoinsDto> apJoinsSeparate() {
+		List<AppointmentJoins> allJoinsSp = appointmentRepository.findByJoinsApsSeparate();
+		List<AppointmentJoinsDto> allDtos = new ArrayList<>();
+		for (AppointmentJoins sss : allJoinsSp) {
+			AppointmentJoinsDto dto = new AppointmentJoinsDto();
+			dto.setAppointmentId(sss.getAppointmentId());
+			dto.setAppointmentDate(sss.getAppointmentDate());
+			dto.setConsultationFee(sss.getConsultationFee());
+			dto.setMedicineCost(sss.getMedicineCost());
+
+			dto.setName(sss.getName());
+			dto.setStatus(sss.getStatus());
+			dto.setSpecialization(sss.getSpecialization());
+			dto.setPhone(sss.getPhone());
+			dto.setPaymentStatus(sss.getPaymentStatus());
+			allDtos.add(dto);
+		}
+
 		return allDtos;
-	  }
-
-	 
-	 
+	}
 
 }

@@ -49,4 +49,9 @@ public class BillingController {
 		return ResponseEntity.ok(updateBillings);
 		
 	}
+	@GetMapping("/bewtfeen -consultance-fee")
+	public ResponseEntity<List<BillingDto>> biilingss(){
+		List<BillingDto> allnilingss=billingService.getAllbillingsfee();
+		return ResponseEntity.ok(allnilingss);
+	}
 }

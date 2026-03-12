@@ -8,12 +8,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+//@NamedNativeQuery(name="constlatance-fees",query = "select * from billing where consultation_fee between 100 and 900",resultClass = Billing.class)
 @Entity
 @Table(name="billing")
+
 public class Billing {
+	
+	
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
